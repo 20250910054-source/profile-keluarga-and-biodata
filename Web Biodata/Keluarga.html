@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Biodata Helmi & Profil Keluarga Bahmed - Kuningan, Jawa Barat">
+<title>Helmi | Biodata & Keluarga Bahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf8f6; --card:#ffffff; --ink:#2f2a33; --muted:#8a8392;
+    --rose:#f7d6e0; --peach:#fde3cf; --mint:#d5f0e3; --sky:#d6e6fb; --lilac:#e4dcf8;
+    --accent:#7c6bd6;
+    --radius:24px;
+    --shadow:0 10px 30px rgba(124,107,214,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:var(--bg); color:var(--ink);
+    line-height:1.6; min-height:100vh; padding:48px 20px 64px;
+    position:relative; overflow-x:hidden;
+  }
+  body::before,body::after{
+    content:""; position:fixed; z-index:-1; border-radius:50%; filter:blur(70px); opacity:.7;
+  }
+  body::before{width:380px;height:380px;background:var(--rose);top:-100px;left:-100px}
+  body::after{width:420px;height:420px;background:var(--sky);bottom:-120px;right:-120px}
+
+  /* radio untuk switch tab (disembunyikan) */
+  .tab-input{position:absolute;opacity:0;pointer-events:none}
+
+  .wrap{max-width:960px;margin:0 auto;display:grid;gap:22px;
+        grid-template-columns:repeat(12,1fr)}
+  .card{
+    background:var(--card); border-radius:var(--radius); padding:28px;
+    box-shadow:var(--shadow); border:1px solid rgba(124,107,214,.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+    animation:fadeUp .7s ease both;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(124,107,214,.18)}
+  .panel .card:nth-child(2){animation-delay:.08s}
+  .panel .card:nth-child(3){animation-delay:.16s}
+  .panel .card:nth-child(4){animation-delay:.24s}
+  .panel .card:nth-child(5){animation-delay:.32s}
+  .panel .card:nth-child(6){animation-delay:.4s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  h2{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+     font-weight:800;margin-bottom:16px}
+
+  /* ===== HERO ===== */
+  .hero{grid-column:span 12;display:flex;align-items:center;gap:32px;
+        background:linear-gradient(135deg,var(--lilac),var(--rose) 55%,var(--peach));
+        padding:40px}
+  .avatar{
+    flex:none;width:140px;height:140px;border-radius:50%;
+    background:#fff;display:grid;place-items:center;
+    font-size:3.6rem;font-weight:800;color:var(--accent);
+    box-shadow:0 0 0 8px rgba(255,255,255,.55), 0 12px 30px rgba(124,107,214,.25);
+    animation:float 4s ease-in-out infinite;
+  }
+  @keyframes float{50%{transform:translateY(-8px)}}
+  .hero small{display:inline-block;background:rgba(255,255,255,.7);padding:4px 14px;
+              border-radius:99px;font-weight:700;font-size:.75rem;margin-bottom:10px}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;font-weight:800;letter-spacing:-.02em}
+  .hero p{margin-top:10px;color:#5b5463;max-width:46ch}
+
+  /* ===== SWITCH TAB ===== */
+  .switch{
+    grid-column:span 12;justify-self:center;
+    display:flex;gap:6px;padding:6px;border-radius:99px;
+    background:#fff;box-shadow:var(--shadow);border:1px solid rgba(124,107,214,.1);
+  }
+  .switch label{
+    cursor:pointer;padding:12px 28px;border-radius:99px;
+    font-weight:800;font-size:.9rem;color:var(--muted);
+    transition:background .3s,color .3s,transform .2s;user-select:none;
+  }
+  .switch label:hover{transform:scale(1.04);color:var(--ink)}
+  #t-bio:checked ~ .wrap label[for="t-bio"],
+  #t-fam:checked ~ .wrap label[for="t-fam"]{
+    background:linear-gradient(135deg,var(--lilac),var(--rose));
+    color:var(--ink);box-shadow:0 6px 16px rgba(124,107,214,.2);
+  }
+  #t-bio:focus-visible ~ .wrap label[for="t-bio"],
+  #t-fam:focus-visible ~ .wrap label[for="t-fam"]{outline:3px solid var(--accent);outline-offset:2px}
+
+  /* ===== PANEL ===== */
+  .panel{display:none;grid-column:span 12;gap:22px;grid-template-columns:repeat(12,1fr)}
+  #t-bio:checked ~ .wrap #p-bio,
+  #t-fam:checked ~ .wrap #p-fam{display:grid}
+
+  /* ===== BIODATA ===== */
+  .about{grid-column:span 7}
+  .data{grid-column:span 5}
+  .edu{grid-column:span 6}
+  .skills{grid-column:span 6}
+  .hobi{grid-column:span 6}
+  .kontak{grid-column:span 6}
+
+  .about p{color:#555}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;
+       border-bottom:1px dashed #ece7f3;font-size:.92rem}
+  .row:last-child{border:0}
+  .row span:first-child{color:var(--muted)}
+  .row span:last-child{font-weight:700;text-align:right}
+
+  .tl{border-left:3px solid var(--lilac);padding-left:18px;position:relative}
+  .tl .dot{position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;
+           background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 3px var(--lilac)}
+  .tl h3{font-size:1rem}
+  .tl p{color:var(--muted);font-size:.9rem}
+
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{padding:8px 16px;border-radius:99px;font-size:.85rem;font-weight:700;transition:transform .2s}
+  .pill:hover{transform:scale(1.08) rotate(-2deg)}
+  .pill:nth-child(5n+1){background:var(--rose)}
+  .pill:nth-child(5n+2){background:var(--mint)}
+  .pill:nth-child(5n+3){background:var(--sky)}
+  .pill:nth-child(5n+4){background:var(--peach)}
+  .pill:nth-child(5n+5){background:var(--lilac)}
+
+  .link{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;
+        text-decoration:none;color:var(--ink);margin-bottom:8px;
+        background:#faf8fd;transition:background .25s, transform .25s}
+  .link:hover{background:var(--lilac);transform:translateX(6px)}
+  .link i{font-style:normal;width:38px;height:38px;border-radius:12px;display:grid;
+          place-items:center;background:#fff;font-size:1.1rem}
+  .link b{display:block;font-size:.9rem}
+  .link small{color:var(--muted)}
+
+  /* ===== KELUARGA ===== */
+  .fam-hero{
+    grid-column:span 12;text-align:center;padding:40px 28px;
+    background:linear-gradient(135deg,var(--peach),var(--rose) 50%,var(--lilac));
+  }
+  .fam-hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .fam-hero em{display:block;margin-top:6px;color:#5b5463;font-style:italic}
+  .badge{display:inline-block;margin-top:16px;background:rgba(255,255,255,.75);
+         padding:6px 18px;border-radius:99px;font-weight:800;font-size:.78rem;color:var(--accent)}
+
+  .tentang{grid-column:span 7}
+  .nilai{grid-column:span 5}
+  .tentang p{color:#555}
+  .tentang blockquote{
+    margin-top:18px;padding:16px 18px;border-left:4px solid var(--accent);
+    background:#faf8fd;border-radius:0 16px 16px 0;font-style:italic;color:#5b5463;font-size:.92rem;
+  }
+  .tentang blockquote span{display:block;margin-top:6px;font-style:normal;font-weight:700;font-size:.82rem;color:var(--muted)}
+
+  .nilai ol{list-style:none;counter-reset:n;display:grid;gap:10px}
+  .nilai li{counter-increment:n;display:flex;gap:12px;align-items:flex-start;font-size:.9rem}
+  .nilai li::before{
+    content:counter(n);flex:none;width:28px;height:28px;border-radius:10px;
+    display:grid;place-items:center;font-weight:800;font-size:.8rem;
+  }
+  .nilai li:nth-child(1)::before{background:var(--rose)}
+  .nilai li:nth-child(2)::before{background:var(--mint)}
+  .nilai li:nth-child(3)::before{background:var(--sky)}
+  .nilai li span{color:var(--muted)}
+
+  .section-title{grid-column:span 12;margin-top:10px}
+
+  .member{grid-column:span 4;padding:0;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .member .photo{
+    height:210px;background:linear-gradient(135deg,var(--lilac),var(--peach));overflow:hidden;
+  }
+  .member .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+  .member:hover .photo img{transform:scale(1.08)}
+  .member .info{padding:20px 22px 24px}
+  .member .rel{display:inline-block;padding:3px 12px;border-radius:99px;font-size:.72rem;font-weight:800;margin-bottom:8px}
+  .member:nth-of-type(6n+1) .rel{background:var(--rose)}
+  .member:nth-of-type(6n+2) .rel{background:var(--mint)}
+  .member:nth-of-type(6n+3) .rel{background:var(--sky)}
+  .member:nth-of-type(6n+4) .rel{background:var(--peach)}
+  .member:nth-of-type(6n+5) .rel{background:var(--lilac)}
+  .member:nth-of-type(6n+6) .rel{background:var(--rose)}
+  .member h3{font-size:1.1rem;line-height:1.3}
+  .member .meta{margin-top:10px;display:grid;gap:4px;font-size:.84rem}
+  .member .meta div{display:flex;gap:8px}
+  .member .meta b{color:var(--muted);font-weight:500;min-width:62px}
+  .member p{margin-top:12px;padding-top:12px;border-top:1px dashed #ece7f3;color:#666;font-size:.86rem}
+  .member.me{border:2px solid var(--accent)}
+  .member.me::after{
+    content:"⭐ Saya";position:absolute;top:14px;right:14px;
+    background:#fff;padding:4px 12px;border-radius:99px;font-size:.75rem;font-weight:800;
+    color:var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.12);
+  }
+
+  /* silsilah */
+  .silsilah{grid-column:span 12;text-align:center}
+  .gen{position:relative;padding-bottom:34px}
+  .gen:last-child{padding-bottom:0}
+  .gen:not(:last-child)::after{
+    content:"";position:absolute;left:50%;bottom:6px;width:2px;height:22px;
+    background:var(--lilac);transform:translateX(-50%);
+  }
+  .gen-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+             color:var(--muted);margin-bottom:12px}
+  .gen-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .node{padding:14px 22px;border-radius:18px;font-size:.88rem;min-width:170px;
+        transition:transform .25s}
+  .node:hover{transform:translateY(-4px)}
+  .node small{display:block;color:var(--muted);font-size:.74rem}
+  .node.a{background:var(--sky)}
+  .node.b{background:var(--peach)}
+  .node.c{background:var(--rose)}
+  .node.d{background:var(--mint);min-width:140px}
+  .node.e{background:var(--lilac);min-width:140px}
+
+  /* galeri */
+  .galeri{grid-column:span 12}
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal-grid figure{border-radius:20px;overflow:hidden;background:#faf8fd}
+  .gal-grid img{width:100%;height:210px;object-fit:cover;display:block;transition:transform .5s;background:var(--lilac)}
+  .gal-grid figure:hover img{transform:scale(1.08)}
+  .gal-grid figcaption{padding:12px 14px;font-size:.82rem;font-weight:700;text-align:center}
+
+  /* impian */
+  .impian{grid-column:span 12}
+  .dream{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:16px;
+         background:#faf8fd;margin-bottom:8px;font-size:.92rem;transition:transform .25s}
+  .dream:hover{transform:translateX(6px)}
+  .dream .tick{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+               font-size:.8rem;font-weight:800;border:2px solid var(--lilac);background:#fff}
+  .dream.done .tick{background:var(--mint);border-color:var(--mint);color:#2e7d5b}
+  .dream.done span:last-child{text-decoration:line-through;color:var(--muted)}
+
+  footer{grid-column:span 12;text-align:center;color:var(--muted);font-size:.8rem;margin-top:8px}
+
+  @media(max-width:860px){
+    .member{grid-column:span 6}
+    .gal-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .hero{flex-direction:column;text-align:center;padding:32px 24px}
+    .about,.data,.edu,.skills,.hobi,.kontak,.tentang,.nilai{grid-column:span 12}
+    .switch label{padding:11px 18px}
+  }
+  @media(max-width:560px){
+    .member{grid-column:span 12}
+    .gal-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- radio switch (harus sebelum .wrap) -->
+<input class="tab-input" type="radio" name="tab" id="t-bio" checked>
+<input class="tab-input" type="radio" name="tab" id="t-fam">
+
+<main class="wrap">
+
+  <!-- ===== HERO (tetap tampil di kedua tab) ===== -->
+  <section class="card hero">
+    <div class="avatar">H</div>
+    <div>
+      <small>👋 Halo, salam kenal!</small>
+      <h1>Helmi</h1>
+      <p>Mahasiswa Universitas Kuningan yang suka ngoprek teknologi dan bikin sesuatu yang bermanfaat.</p>
+    </div>
+  </section>
+
+  <!-- ===== SWITCH ===== -->
+  <nav class="switch" aria-label="Pilih tampilan">
+    <label for="t-bio">🙋 Biodata</label>
+    <label for="t-fam">🏡 Profil Keluarga</label>
+  </nav>
+
+  <!-- ====================================================== -->
+  <!-- PANEL 1: BIODATA                                       -->
+  <!-- ====================================================== -->
+  <div class="panel" id="p-bio">
+
+    <section class="card about">
+      <h2>Tentang Saya</h2>
+      <p>Si bungsu yang kreatif dan ceria. Hari-hari saya diisi dengan mendengarkan musik dan mendesain, sambil terus belajar dunia teknologi di bangku kuliah. [ISI: tambahin cita-cita atau hal yang bikin kamu semangat.]</p>
+    </section>
+
+    <section class="card data">
+      <h2>Data Diri</h2>
+      <div class="row"><span>Nama Lengkap</span><span>Helmi Naser Bahmed</span></div>
+      <div class="row"><span>Tempat, Tgl Lahir</span><span>Kuningan, 15 Juni 2007</span></div>
+      <div class="row"><span>Anak ke</span><span>4 (Bungsu)</span></div>
+      <div class="row"><span>Jenis Kelamin</span><span>[ISI]</span></div>
+      <div class="row"><span>Domisili</span><span>Kuningan, Jawa Barat</span></div>
+      <div class="row"><span>Agama</span><span>[ISI]</span></div>
+    </section>
+
+    <section class="card edu">
+      <h2>Pendidikan</h2>
+      <div class="tl">
+        <span class="dot"></span>
+        <h3>Universitas Kuningan</h3>
+        <p>Program Studi [ISI] · Kelas SINFC-2025-02</p>
+      </div>
+      <div class="tl" style="margin-top:18px">
+        <span class="dot" style="background:var(--rose)"></span>
+        <h3>[ISI: nama SMA/SMK]</h3>
+        <p>[ISI: jurusan] · [tahun lulus]</p>
+      </div>
+    </section>
+
+    <section class="card skills">
+      <h2>Keahlian</h2>
+      <div class="pills">
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">Designing</span>
+        <span class="pill">[ISI skill]</span>
+        <span class="pill">[ISI skill]</span>
+      </div>
+    </section>
+
+    <section class="card hobi">
+      <h2>Hobi &amp; Minat</h2>
+      <div class="pills">
+        <span class="pill">🎧 Mendengar musik</span>
+        <span class="pill">🎨 Designing</span>
+      </div>
+    </section>
+
+    <section class="card kontak">
+      <h2>Kontak</h2>
+      <a class="link" href="mailto:emailkamu@gmail.com"><i>✉️</i><span><b>Email</b><small>emailkamu@gmail.com</small></span></a>
+      <a class="link" href="https://instagram.com/usernamekamu" target="_blank" rel="noopener"><i>📸</i><span><b>Instagram</b><small>@usernamekamu</small></span></a>
+      <a class="link" href="https://github.com/usernamekamu" target="_blank" rel="noopener"><i>💻</i><span><b>GitHub</b><small>github.com/usernamekamu</small></span></a>
+    </section>
+
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- PANEL 2: PROFIL KELUARGA                               -->
+  <!-- ====================================================== -->
+  <div class="panel" id="p-fam">
+
+    <section class="card fam-hero">
+      <h1>Keluarga Bahmed</h1>
+      <em>“Home Sweet Home”</em>
+      <span class="badge">🔥 Keluarga paling GHARRR</span>
+    </section>
+
+    <section class="card tentang">
+      <h2>Tentang Keluarga Kami</h2>
+      <p>Kami adalah keluarga sederhana yang tinggal di <b>Kabupaten Kuningan, Jawa Barat</b>. Dengan semangat <i>gotong royong</i>, kami saling mendukung dalam suka dan duka. Halaman ini dibuat sebagai perkenalan singkat keluarga kami, sekaligus arsip digital untuk anak cucu di masa depan.</p>
+      <blockquote>
+        “Keluarga bukan hal yang penting, melainkan segalanya.”
+        <span>— Michael J. Fox</span>
+      </blockquote>
+    </section>
+
+    <section class="card nilai">
+      <h2>Nilai-Nilai Keluarga</h2>
+      <ol>
+        <li><div><b>Kejujuran</b><br><span>berkata dan berbuat apa adanya</span></div></li>
+        <li><div><b>Kerja keras</b><br><span>usaha yang dibarengi doa</span></div></li>
+        <li><div><b>Saling menghormati</b><br><span>yang muda menghargai yang tua</span></div></li>
+      </ol>
+    </section>
+
+    <h2 class="section-title">Anggota Keluarga Inti</h2>
+
+    <article class="card member">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-23%20at%205.53.18%20AM.jpeg" alt="Foto Naser Bahmed"></div>
+      <div class="info">
+        <span class="rel">Ayah / Kepala Keluarga</span>
+        <h3>Naser Bahmed</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Kuningan, 19 Mei 1968</span></div>
+          <div><b>Kegiatan</b><span>Wiraswasta</span></div>
+          <div><b>Hobi</b><span>Memancing</span></div>
+        </div>
+        <p>Tulang punggung keluarga yang tak pernah mengeluh. Akhir pekan dihabiskan di kebun belakang rumah.</p>
+      </div>
+    </article>
+
+    <article class="card member">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-23%20at%206.13.51%20AM.jpeg" alt="Foto Jamilah"></div>
+      <div class="info">
+        <span class="rel">Ibu</span>
+        <h3>Jamilah</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Cirebon, 11 November 1977</span></div>
+          <div><b>Kegiatan</b><span>Ibu Rumah Tangga</span></div>
+          <div><b>Hobi</b><span>Memasak, merajut</span></div>
+        </div>
+        <p>Koki andalan keluarga. Sambal buatannya selalu dirindukan saat anak-anak merantau.</p>
+      </div>
+    </article>
+
+    <article class="card member">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-23%20at%206.29.31%20AM.jpegg.jpg" alt="Foto Ahmad Naser Bahmed"></div>
+      <div class="info">
+        <span class="rel">Anak Pertama</span>
+        <h3>Ahmad Naser Bahmed</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Riyadh, 6 Mei 1989</span></div>
+          <div><b>Kegiatan</b><span>Wiraswasta</span></div>
+          <div><b>Hobi</b><span>Mancing</span></div>
+        </div>
+        <p>Anak pertama yang memiliki usaha berniaga.</p>
+      </div>
+    </article>
+
+    <article class="card member">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-23%20at%206.12.08%20AM.jpeg" alt="Foto Wardah Naser"></div>
+      <div class="info">
+        <span class="rel">Anak Kedua</span>
+        <h3>Wardah Naser</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Tangerang, 9 Oktober 1990</span></div>
+          <div><b>Kegiatan</b><span>Ibu Rumah Tangga</span></div>
+          <div><b>Hobi</b><span>Membaca</span></div>
+        </div>
+        <p>Anak kedua yang sudah memiliki dua anak juga.</p>
+      </div>
+    </article>
+
+    <article class="card member">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-23%20at%206.28.25%20AM.jpeg" alt="Foto Wafa Fauziah"></div>
+      <div class="info">
+        <span class="rel">Anak Ketiga</span>
+        <h3>Wafa Fauziah</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Tangerang, 21 Juni 2001</span></div>
+          <div><b>Kegiatan</b><span>Ibu Rumah Tangga</span></div>
+          <div><b>Hobi</b><span>Berkebun</span></div>
+        </div>
+        <p>Seorang ibu rumah tangga yang sudah hidup jauh di Bogor.</p>
+      </div>
+    </article>
+
+    <article class="card member me">
+      <div class="photo"><img src="WhatsApp%20Image%202026-10-22%20at%2010.40.05%20PM.jpeg" alt="Foto Helmi Naser Bahmed"></div>
+      <div class="info">
+        <span class="rel">Anak Keempat (Bungsu)</span>
+        <h3>Helmi Naser Bahmed</h3>
+        <div class="meta">
+          <div><b>Lahir</b><span>Kuningan, 15 Juni 2007</span></div>
+          <div><b>Kegiatan</b><span>Mahasiswa</span></div>
+          <div><b>Hobi</b><span>Mendengar musik, Designing</span></div>
+        </div>
+        <p>Si bungsu yang kreatif dan ceria, sering mendengar musik dan mendesain.</p>
+      </div>
+    </article>
+
+    <!-- SILSILAH -->
+    <section class="card silsilah">
+      <h2>Silsilah Keluarga</h2>
+
+      <div class="gen">
+        <div class="gen-label">Generasi I · Kakek &amp; Nenek</div>
+        <div class="gen-row">
+          <div class="node a"><b>H. Abdul &amp; Hj. Siti</b><small>Kakek &amp; nenek dari Ayah</small></div>
+          <div class="node b"><b>H. Raksakersa &amp; Hj. Timu</b><small>Kakek &amp; nenek dari Ibu</small></div>
+        </div>
+      </div>
+
+      <div class="gen">
+        <div class="gen-label">Generasi II · Orang Tua</div>
+        <div class="gen-row">
+          <div class="node c"><b>Naser Bahmed ❤️ Jamilah</b></div>
+        </div>
+      </div>
+
+      <div class="gen">
+        <div class="gen-label">Generasi III · Anak</div>
+        <div class="gen-row">
+          <div class="node d">Ahmad Naser</div>
+          <div class="node e">Wardah Naser</div>
+          <div class="node d">Wafa Fauziah</div>
+          <div class="node e">Helmi Naser</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section class="card galeri">
+      <h2>Galeri Kenangan</h2>
+      <div class="gal-grid">
+        <figure>
+          <img src="WhatsApp%20Image%202026-10-22%20at%2010.19.05%20PM.jpeg" alt="Foto keluarga">
+          <figcaption>Full member gilakkk</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp%20Image%202026-10-22%20at%2010.18.36%20PM.jpeg" alt="Di pernikahan kakak">
+          <figcaption>At my sister wedding</figcaption>
+        </figure>
+        <figure>
+          <img src="IMG_20260129_185440_843.jpg" alt="Lomba pantomim">
+          <figcaption>Lomba pantomim (tapi kalah)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMPIAN -->
+    <section class="card impian">
+      <h2>Impian Bersama</h2>
+      <div class="dream done"><span class="tick">✓</span><span>Membuka usaha keluarga</span></div>
+      <div class="dream"><span class="tick"></span><span>Berangkat umrah bersama</span></div>
+      <div class="dream"><span class="tick"></span><span>Menyekolahkan anak hingga sarjana</span></div>
+    </section>
+
+  </div>
+
+  <footer>© 2026 Helmi · Keluarga Besar Bahmed · Dibuat dengan HTML &amp; CSS</footer>
+</main>
+</body>
+</html>
